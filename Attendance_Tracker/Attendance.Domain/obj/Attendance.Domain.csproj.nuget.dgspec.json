@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Bhuvanesh\\source\\repos\\Attendance.Domain\\Attendance.Domain.csproj": {}
+    "C:\\Users\\Bhuvanesh\\source\\repos\\AttendanceTrackerRepo\\Attendance_Tracker\\Attendance.Domain\\Attendance.Domain.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Bhuvanesh\\source\\repos\\Attendance.Domain\\Attendance.Domain.csproj": {
+    "C:\\Users\\Bhuvanesh\\source\\repos\\AttendanceTrackerRepo\\Attendance_Tracker\\Attendance.Domain\\Attendance.Domain.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Bhuvanesh\\source\\repos\\Attendance.Domain\\Attendance.Domain.csproj",
+        "projectUniqueName": "C:\\Users\\Bhuvanesh\\source\\repos\\AttendanceTrackerRepo\\Attendance_Tracker\\Attendance.Domain\\Attendance.Domain.csproj",
         "projectName": "Attendance.Domain",
-        "projectPath": "C:\\Users\\Bhuvanesh\\source\\repos\\Attendance.Domain\\Attendance.Domain.csproj",
+        "projectPath": "C:\\Users\\Bhuvanesh\\source\\repos\\AttendanceTrackerRepo\\Attendance_Tracker\\Attendance.Domain\\Attendance.Domain.csproj",
         "packagesPath": "C:\\Users\\Bhuvanesh\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Bhuvanesh\\source\\repos\\Attendance.Domain\\obj\\",
+        "outputPath": "C:\\Users\\Bhuvanesh\\source\\repos\\AttendanceTrackerRepo\\Attendance_Tracker\\Attendance.Domain\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"

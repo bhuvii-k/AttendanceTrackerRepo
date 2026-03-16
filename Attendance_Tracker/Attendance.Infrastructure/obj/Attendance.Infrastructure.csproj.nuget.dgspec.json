@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Bhuvanesh\\source\\repos\\Attendance.Infrastructure\\Attendance.Infrastructure.csproj": {}
+    "C:\\Users\\Bhuvanesh\\source\\repos\\AttendanceTrackerRepo\\Attendance_Tracker\\Attendance.Infrastructure\\Attendance.Infrastructure.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Bhuvanesh\\source\\repos\\Attendance.Application\\Attendance.Application.csproj": {
+    "C:\\Users\\Bhuvanesh\\source\\repos\\AttendanceTrackerRepo\\Attendance_Tracker\\Attendance.Application\\Attendance.Application.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Bhuvanesh\\source\\repos\\Attendance.Application\\Attendance.Application.csproj",
+        "projectUniqueName": "C:\\Users\\Bhuvanesh\\source\\repos\\AttendanceTrackerRepo\\Attendance_Tracker\\Attendance.Application\\Attendance.Application.csproj",
         "projectName": "Attendance.Application",
-        "projectPath": "C:\\Users\\Bhuvanesh\\source\\repos\\Attendance.Application\\Attendance.Application.csproj",
+        "projectPath": "C:\\Users\\Bhuvanesh\\source\\repos\\AttendanceTrackerRepo\\Attendance_Tracker\\Attendance.Application\\Attendance.Application.csproj",
         "packagesPath": "C:\\Users\\Bhuvanesh\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Bhuvanesh\\source\\repos\\Attendance.Application\\obj\\",
+        "outputPath": "C:\\Users\\Bhuvanesh\\source\\repos\\AttendanceTrackerRepo\\Attendance_Tracker\\Attendance.Application\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
@@ -32,8 +32,8 @@
           "net10.0": {
             "targetAlias": "net10.0",
             "projectReferences": {
-              "C:\\Users\\Bhuvanesh\\source\\repos\\Attendance.Domain\\Attendance.Domain.csproj": {
-                "projectPath": "C:\\Users\\Bhuvanesh\\source\\repos\\Attendance.Domain\\Attendance.Domain.csproj"
+              "C:\\Users\\Bhuvanesh\\source\\repos\\AttendanceTrackerRepo\\Attendance_Tracker\\Attendance.Domain\\Attendance.Domain.csproj": {
+                "projectPath": "C:\\Users\\Bhuvanesh\\source\\repos\\AttendanceTrackerRepo\\Attendance_Tracker\\Attendance.Domain\\Attendance.Domain.csproj"
               }
             }
           }
@@ -347,14 +347,14 @@
         }
       }
     },
-    "C:\\Users\\Bhuvanesh\\source\\repos\\Attendance.Domain\\Attendance.Domain.csproj": {
+    "C:\\Users\\Bhuvanesh\\source\\repos\\AttendanceTrackerRepo\\Attendance_Tracker\\Attendance.Domain\\Attendance.Domain.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Bhuvanesh\\source\\repos\\Attendance.Domain\\Attendance.Domain.csproj",
+        "projectUniqueName": "C:\\Users\\Bhuvanesh\\source\\repos\\AttendanceTrackerRepo\\Attendance_Tracker\\Attendance.Domain\\Attendance.Domain.csproj",
         "projectName": "Attendance.Domain",
-        "projectPath": "C:\\Users\\Bhuvanesh\\source\\repos\\Attendance.Domain\\Attendance.Domain.csproj",
+        "projectPath": "C:\\Users\\Bhuvanesh\\source\\repos\\AttendanceTrackerRepo\\Attendance_Tracker\\Attendance.Domain\\Attendance.Domain.csproj",
         "packagesPath": "C:\\Users\\Bhuvanesh\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Bhuvanesh\\source\\repos\\Attendance.Domain\\obj\\",
+        "outputPath": "C:\\Users\\Bhuvanesh\\source\\repos\\AttendanceTrackerRepo\\Attendance_Tracker\\Attendance.Domain\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
@@ -686,14 +686,14 @@
         }
       }
     },
-    "C:\\Users\\Bhuvanesh\\source\\repos\\Attendance.Infrastructure\\Attendance.Infrastructure.csproj": {
+    "C:\\Users\\Bhuvanesh\\source\\repos\\AttendanceTrackerRepo\\Attendance_Tracker\\Attendance.Infrastructure\\Attendance.Infrastructure.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Bhuvanesh\\source\\repos\\Attendance.Infrastructure\\Attendance.Infrastructure.csproj",
+        "projectUniqueName": "C:\\Users\\Bhuvanesh\\source\\repos\\AttendanceTrackerRepo\\Attendance_Tracker\\Attendance.Infrastructure\\Attendance.Infrastructure.csproj",
         "projectName": "Attendance.Infrastructure",
-        "projectPath": "C:\\Users\\Bhuvanesh\\source\\repos\\Attendance.Infrastructure\\Attendance.Infrastructure.csproj",
+        "projectPath": "C:\\Users\\Bhuvanesh\\source\\repos\\AttendanceTrackerRepo\\Attendance_Tracker\\Attendance.Infrastructure\\Attendance.Infrastructure.csproj",
         "packagesPath": "C:\\Users\\Bhuvanesh\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Bhuvanesh\\source\\repos\\Attendance.Infrastructure\\obj\\",
+        "outputPath": "C:\\Users\\Bhuvanesh\\source\\repos\\AttendanceTrackerRepo\\Attendance_Tracker\\Attendance.Infrastructure\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
@@ -714,11 +714,11 @@
           "net10.0": {
             "targetAlias": "net10.0",
             "projectReferences": {
-              "C:\\Users\\Bhuvanesh\\source\\repos\\Attendance.Application\\Attendance.Application.csproj": {
-                "projectPath": "C:\\Users\\Bhuvanesh\\source\\repos\\Attendance.Application\\Attendance.Application.csproj"
+              "C:\\Users\\Bhuvanesh\\source\\repos\\AttendanceTrackerRepo\\Attendance_Tracker\\Attendance.Application\\Attendance.Application.csproj": {
+                "projectPath": "C:\\Users\\Bhuvanesh\\source\\repos\\AttendanceTrackerRepo\\Attendance_Tracker\\Attendance.Application\\Attendance.Application.csproj"
               },
-              "C:\\Users\\Bhuvanesh\\source\\repos\\Attendance.Domain\\Attendance.Domain.csproj": {
-                "projectPath": "C:\\Users\\Bhuvanesh\\source\\repos\\Attendance.Domain\\Attendance.Domain.csproj"
+              "C:\\Users\\Bhuvanesh\\source\\repos\\AttendanceTrackerRepo\\Attendance_Tracker\\Attendance.Domain\\Attendance.Domain.csproj": {
+                "projectPath": "C:\\Users\\Bhuvanesh\\source\\repos\\AttendanceTrackerRepo\\Attendance_Tracker\\Attendance.Domain\\Attendance.Domain.csproj"
               }
             }
           }
