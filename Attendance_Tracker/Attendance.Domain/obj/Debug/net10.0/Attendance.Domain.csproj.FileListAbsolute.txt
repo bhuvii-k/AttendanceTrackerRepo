@@ -1,0 +1,11 @@
+C:\Users\Bhuvanesh\source\repos\Attendance.Domain\bin\Debug\net10.0\Attendance.Domain.deps.json
+C:\Users\Bhuvanesh\source\repos\Attendance.Domain\bin\Debug\net10.0\Attendance.Domain.dll
+C:\Users\Bhuvanesh\source\repos\Attendance.Domain\bin\Debug\net10.0\Attendance.Domain.pdb
+C:\Users\Bhuvanesh\source\repos\Attendance.Domain\obj\Debug\net10.0\Attendance.Domain.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Bhuvanesh\source\repos\Attendance.Domain\obj\Debug\net10.0\Attendance.Domain.AssemblyInfoInputs.cache
+C:\Users\Bhuvanesh\source\repos\Attendance.Domain\obj\Debug\net10.0\Attendance.Domain.AssemblyInfo.cs
+C:\Users\Bhuvanesh\source\repos\Attendance.Domain\obj\Debug\net10.0\Attendance.Domain.csproj.CoreCompileInputs.cache
+C:\Users\Bhuvanesh\source\repos\Attendance.Domain\obj\Debug\net10.0\Attendance.Domain.dll
+C:\Users\Bhuvanesh\source\repos\Attendance.Domain\obj\Debug\net10.0\refint\Attendance.Domain.dll
+C:\Users\Bhuvanesh\source\repos\Attendance.Domain\obj\Debug\net10.0\Attendance.Domain.pdb
+C:\Users\Bhuvanesh\source\repos\Attendance.Domain\obj\Debug\net10.0\ref\Attendance.Domain.dll
