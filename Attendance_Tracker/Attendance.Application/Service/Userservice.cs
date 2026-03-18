@@ -12,31 +12,41 @@ namespace Attendance.Application.Service
     {
         private readonly IUserRepo repo;
 
-        public Userservice(IUserRepo repo) 
+        public Userservice(IUserRepo repo)
         {
             this.repo = repo;
         }
-        public async Task<List<getdto>> Getall()
+
+        public async Task<getdto> Delete(int id)
         {
-            var result = await repo.Getall();
-
-            var data = result.Select(x => new getdto
+            var result= await repo.Delete(id);
+            var data = new getdto
             {
-                Id = x.Id,
-                Email = x.Email,
-                Username = x.Username,
-                RoleId = x.RoleId
-            }).ToList();
+                Id=result.Id,
 
-            return data;
+
+            };
         }
 
-        public Task<User> Posttuser(Postdto data)
+        public Task<List<getdto>> Getall()
         {
             throw new NotImplementedException();
         }
 
+        public Task<getdto> Getuser(int id)
+        {
+            throw new NotImplementedException();
+        }
 
+        public Task<getdto> Posttuser(Postdto data)
+        {
+            throw new NotImplementedException();
+        }
+
+        public Task<getdto> Update(Postdto data)
+        {
+            throw new NotImplementedException();
+        }
     }
 }
 

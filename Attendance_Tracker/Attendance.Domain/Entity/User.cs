@@ -14,6 +14,8 @@ namespace Attendance.Domain.Entity
 
         [ForeignKey("RoleId")]
         public int RoleId {  get; set; }
-        public Role Role { get; set; }  
+        public Role Role { get; set; }
+        public ICollection<AttendanceEntries> Attendances { get; set; }
+        public ICollection<AttendanceEntries> RecordedAttendances { get; set; }
     }
 }

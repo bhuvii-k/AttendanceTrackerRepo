@@ -9,6 +9,10 @@ namespace Attendance.Domain.Interface
     {
         Task<List<User>> Getall();
         Task<User> Post(User data);
+        Task<User> Update(User data);
+        Task<User> Delete(int id);
+        Task<User> GetbyId(int id);
+
 
     }
 }

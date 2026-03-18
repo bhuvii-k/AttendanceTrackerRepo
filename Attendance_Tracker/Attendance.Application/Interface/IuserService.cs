@@ -9,6 +9,9 @@ namespace Attendance.Application.Interface
    public interface IuserService
     {
         Task<List<getdto>> Getall();
-        Task<User> Posttuser(Postdto data);
+        Task<getdto> Posttuser(Postdto data);
+        Task<getdto> Getuser(int id);
+        Task<getdto> Update(Postdto  data);
+        Task<getdto> Delete(int id);
     }
 }
