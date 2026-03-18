@@ -4,6 +4,7 @@ using Attendance.Infrastructure.Dbcontext;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Attendance.Infrastructure.Migrations
 {
     [DbContext(typeof(AttendanceDbcontext))]
-    partial class AttendanceDbcontextModelSnapshot : ModelSnapshot
+    [Migration("20260318063341_created_FluentApi")]
+    partial class created_FluentApi
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder

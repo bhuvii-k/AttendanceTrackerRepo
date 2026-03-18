@@ -17,10 +17,25 @@ namespace Attendance.Infrastructure.Repositories
         {
             this.context = context;
         }
+
+        public async Task<User> Delete(int id)
+        {
+           var result=await context.user.FirstOrDefaultAsync(x => x.Id == id);
+            context.Remove(result);
+            context.SaveChanges();
+            return result;
+        }
+
         public async Task<List<User>> Getall()
 
         {
             return await context.user.ToListAsync();
+        }
+
+        public async Task<User> GetbyId(int id)
+        {
+            var result = await context.user.FirstOrDefaultAsync(x => x.Id == id);
+            return result;
         }
 
         public async Task<User> Post(User data)
@@ -36,6 +51,13 @@ namespace Attendance.Infrastructure.Repositories
 
                 throw;
             }
+        }
+
+        public async Task<User> Update(User data)
+        {
+            context.user.Update(data);
+            context.SaveChangesAsync();
+            return data;
         }
     }
 }
