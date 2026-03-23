@@ -10,7 +10,7 @@ namespace Attendance.Domain.Interface
         Task<List<AttendanceEntries>> Getall();
         Task<AttendanceEntries> Post(AttendanceEntries data);
         Task<AttendanceEntries> Update(AttendanceEntries data);
-        Task<string> Delete(int id);
+        Task<AttendanceEntries> Delete(int id);
         Task<AttendanceEntries> Get(int id);
     }
 }

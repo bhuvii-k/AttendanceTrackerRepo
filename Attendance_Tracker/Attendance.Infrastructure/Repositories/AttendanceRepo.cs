@@ -5,6 +5,7 @@ using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Threading.Tasks;
 
 namespace Attendance.Infrastructure.Repositories
 {
@@ -17,60 +18,76 @@ namespace Attendance.Infrastructure.Repositories
         {
             this.context = context;
         }
-        public async Task<string> Delete(int id)
+        public async Task<AttendanceEntries> Delete(int id)
         {
-            var result = await context.Attendance.FindAsync(id);
-
-            if (result == null)
+            try
             {
-                return "Record not found";
+                var result = await context.Attendance.FindAsync(id);
+                if (result == null) return null;
+
+                context.Attendance.Remove(result);
+                await context.SaveChangesAsync();
+
+                return result;
             }
-
-            context.Attendance.Remove(result);
-            await context.SaveChangesAsync();
-
-            return "Deleted successfully";
+            catch (Exception ex)
+            {
+                throw new Exception($"AttendanceRepo.Delete failed: {ex.Message}", ex);
+            }
         }
 
         public async Task<AttendanceEntries> Get(int id)
         {
-            var result = await context.Attendance.FirstOrDefaultAsync(x => x.Id == id);
-            return result;
+            try
+            {
+                var result = await context.Attendance.FirstOrDefaultAsync(x => x.Id == id);
+                return result;
+            }
+            catch (Exception ex)
+            {
+                throw new Exception($"AttendanceRepo.Get failed: {ex.Message}", ex);
+            }
         }
 
         public async Task<List<AttendanceEntries>> Getall()
         {
-            var result=await context.Attendance.ToListAsync();
-            return result;
-           
+            try
+            {
+                var result=await context.Attendance.ToListAsync();
+                return result;
+            }
+            catch (Exception ex)
+            {
+                throw new Exception($"AttendanceRepo.Getall failed: {ex.Message}", ex);
+            }
         }
 
         public async Task<AttendanceEntries> Post(AttendanceEntries data)
         {
             try
             {
-                
-                    await context.Attendance.AddAsync(data);
+                            await context.Attendance.AddAsync(data);
                     await context.SaveChangesAsync();
-                    
-                
-                return data;
+                    return data;
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-
-                throw;
+                throw new Exception($"AttendanceRepo.Post failed: {ex.Message}", ex);
             }
-
-            
         }
 
         public async Task<AttendanceEntries> Update(AttendanceEntries data)
         {
-
-            context.Attendance.Update(data);
-            await context.SaveChangesAsync();
-            return data;
+            try
+            {
+                context.Attendance.Update(data);
+                await context.SaveChangesAsync();
+                return data;
+            }
+            catch (Exception ex)
+            {
+                throw new Exception($"AttendanceRepo.Update failed: {ex.Message}", ex);
+            }
         }
     }
 }
