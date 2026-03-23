@@ -8,10 +8,11 @@ namespace Attendance.Application.Interface
 {
    public interface IuserService
     {
-        Task<List<getdto>> Getall();
-        Task<getdto> Posttuser(Postdto data);
+        Task<List<Postdto>> Getall();
+        Task<Postdto> Posttuser(Postdto data);
         Task<getdto> Getuser(int id);
-        Task<getdto> Update(Postdto  data);
+        Task<Postdto> Update(Postdto  data);
         Task<getdto> Delete(int id);
+        Task<claimdto> Login(Logindto data);
     }
 }
