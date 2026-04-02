@@ -1,23 +1,18 @@
-﻿using Attendance.Domain.Entity;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Text;
 
 namespace Attendance.Application.Dto.Attendancedto
 {
-    public class Attendencegetdto
+    public class customdto
     {
         public int Id { get; set; }
-
         public int UserId { get; set; }
         public int RecordedBy { get; set; }
-
+        public string UserName { get; set; }
+        public string RecordedByName { get; set; }
         public DateOnly Date { get; set; }
         public string status { get; set; }
         public string course { get; set; }
-        public string username { get; set; }
-        public string RecordedByName { get; set; }
-
-
     }
 }

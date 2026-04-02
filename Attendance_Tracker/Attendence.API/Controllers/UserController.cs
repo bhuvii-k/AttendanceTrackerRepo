@@ -21,15 +21,15 @@ namespace Attendance.API.Controllers
             _logger = logger;
         }
 
-        [Authorize]
-        [HttpGet]
-        public async Task<IActionResult> GetUsers()
+        
+        [HttpGet("list_users")]
+        public async Task<IActionResult> GetUsers(string role)
         {
             try
             {
                 _logger.LogInformation("Fetching all users");
 
-                var data = await service.Getall();
+                var data = await service.Getall( role);
 
                 _logger.LogInformation("Users fetched successfully");
 
@@ -41,6 +41,14 @@ namespace Attendance.API.Controllers
                 return StatusCode(500, new { error = ex.Message });
             }
         }
+        [HttpGet("{id}")]
+        public async Task<IActionResult> GetuserbyidAsync(int id)
+        {
+            var result = await service.GetbyId(id);
+            return Ok(result);
+
+        }
+    
 
         [HttpPost("register")]
         public async Task<IActionResult> PostUsers(Postdto data)
@@ -58,6 +66,20 @@ namespace Attendance.API.Controllers
                 _logger.LogError(ex, "Error during user registration");
                 return StatusCode(500, new { error = ex.Message });
             }
+        }
+        [HttpPost]
+        public async Task<IActionResult> Postbyadmin(getdto dto)
+        {
+            var result=await service.Postbyadmin(dto);
+            return Ok(result);
+
+
+        }
+        [HttpPost("userdetail")]
+        public async Task<IActionResult> postuserdetail(Userdetaildto dto)
+        {
+            var result = await service.Postuserdetail(dto);
+            return Ok(result);
         }
 
         [HttpPost("login")]

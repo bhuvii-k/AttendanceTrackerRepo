@@ -28,6 +28,16 @@ namespace Attendance.Infrastructure.Dbcontext
                 .WithMany(u => u.RecordedAttendances)        // Navigation property present in the User model class 
                 .HasForeignKey(a => a.RecordedBy)
                 .OnDelete(DeleteBehavior.Restrict);
+
+            modelBuilder.Entity<User>()
+                .HasOne(u => u.Role)
+                .WithMany(r => r.Users)
+                .HasForeignKey(u => u.RoleId);
+
+            modelBuilder.Entity<User>()
+            .HasOne(u => u.Userdetails)
+            .WithOne(ud => ud.user)
+            .HasForeignKey<Userdetails>(ud => ud.UserId);
         }
     }
 }

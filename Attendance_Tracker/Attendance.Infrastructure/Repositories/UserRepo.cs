@@ -11,7 +11,7 @@ using System.Threading.Tasks;
 
 namespace Attendance.Infrastructure.Repositories
 {
-    public class UserRepo : IAttendence
+    public class UserRepo : IUserRepo
     {
         private readonly AttendanceDbcontext context;
 
@@ -37,13 +37,17 @@ namespace Attendance.Infrastructure.Repositories
            }
         }
 
-        public async Task<List<User>> Getall()
+        public async Task<List<User>> Getall(string role)
         {
             try
             {
                 var result = await context.user
-                    .Include(x => x.Userdetails)
-                    .ToListAsync();   
+                               
+                                                               // load Role data
+                                .Include(x => x.Userdetails)
+                                .Where(x => x.Role.Name == role)// load Userdetails
+
+                                    .ToListAsync();
                 return result;
             }
             catch (Exception ex)
@@ -56,7 +60,7 @@ namespace Attendance.Infrastructure.Repositories
         {
             try
             {
-                var result = await context.user.FirstOrDefaultAsync(x => x.Id == id);
+                var result = await context.user.Include(x=>x.Userdetails).FirstOrDefaultAsync(x => x.Id == id);
                 return result;
             }
             catch (Exception ex)
@@ -95,33 +99,62 @@ namespace Attendance.Infrastructure.Repositories
             }
         }
 
+        public async Task<User> Postbyadmin(User data)
+        {
+            var result = await context.user.AddAsync(data);
+           await  context.SaveChangesAsync();
+            
+            return data;
+        }
+
+        public async Task<Userdetails> Postuserdetail(Userdetails data)
+        {
+            var result = await context.userdetails.AddAsync(data);
+            await context.SaveChangesAsync();
+            return data;
+        }
+
         public async Task<User> Update(User data)
         {
             try
             {
-                var result= await context.user.FirstOrDefaultAsync(x=>x.Id==data.Id);
+                var result = await context.user
+                    .Include(x => x.Userdetails) // ✅ important
+                    .FirstOrDefaultAsync(x => x.Id == data.Id);
+
                 if (result == null) return null;
 
+                // 🔹 User fields
                 result.Username = data.Username;
                 result.Password = data.Password;
                 result.Email = data.Email;
                 result.RoleId = data.RoleId;
-                if (result.Userdetails !=null && data.Userdetails !=null)
+
+                // 🔹 Userdetails update or create
+                if (data.Userdetails != null)
                 {
+                    if (result.Userdetails == null)
+                    {
+                        // ✅ create new Userdetails
+                        result.Userdetails = new Userdetails();
+                    }
+
                     result.Userdetails.Fullname = data.Userdetails.Fullname;
                     result.Userdetails.DOB = data.Userdetails.DOB;
                     result.Userdetails.Gender = data.Userdetails.Gender;
-                    result.Userdetails.DOB = data.Userdetails.DOB;
                     result.Userdetails.Phone = data.Userdetails.Phone;
                     result.Userdetails.Address = data.Userdetails.Address;
                     result.Userdetails.Department = data.Userdetails.Department;
+                    result.Userdetails.Year = data.Userdetails.Year;
                 }
+
                 await context.SaveChangesAsync();
-                return result;
+
+                return result; // ✅ correct
             }
             catch (Exception ex)
             {
-                throw new Exception($"UserRepo.Update failed: {ex.Message}", ex);
+                throw new Exception($"Update failed: {ex.Message}", ex);
             }
         }
     }

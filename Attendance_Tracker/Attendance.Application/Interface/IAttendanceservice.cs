@@ -8,9 +8,9 @@ namespace Attendance.Application.Interface
     public interface IAttendanceservice
     {
         Task<List<Attendencegetdto>> Getall();
-        Task<Attendencegetdto> Getbyid(int id);
-        Task<Attendencegetdto> Post(Attendencegetdto dto);
-        Task<Attendencegetdto> Put(Attendencegetdto dto);
+        Task<List<Attendencegetdto>> Getbyid(int id,string fn);
+        Task<Attendencegetdto> Post(attendancepostdto dto);
+        Task<Attendencegetdto> Put(attendancepostdto dto);
         Task<Attendencegetdto> Delete(int id);
 
     }

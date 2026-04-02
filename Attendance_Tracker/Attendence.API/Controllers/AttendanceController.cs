@@ -30,7 +30,7 @@ namespace Attendance.API.Controllers
             }
         }
         [HttpPost]
-        public async Task<IActionResult> Post(Attendencegetdto dto)
+        public async Task<IActionResult> Post(attendancepostdto dto)
         {
             try
             {
@@ -42,12 +42,12 @@ namespace Attendance.API.Controllers
                 return StatusCode(500, new { error = ex.Message });
             }
         }
-        [HttpGet("{id}")]
-        public async Task<IActionResult> Get(int id)
+        [HttpGet("{id}/{fn}")]
+        public async Task<IActionResult> Get(int id,string fn)
         {
             try
             {
-                var data =await service.Getbyid(id);
+                var data =await service.Getbyid(id,fn);
                 return Ok(data);
             }
             catch (Exception ex)
@@ -56,8 +56,9 @@ namespace Attendance.API.Controllers
             }
 
         }
+        
         [HttpPut]
-        public async Task<IActionResult> Put(Attendencegetdto dto) 
+        public async Task<IActionResult> Put(attendancepostdto dto) 
         { 
             try
             {
@@ -69,7 +70,7 @@ namespace Attendance.API.Controllers
                return StatusCode(500, new { error = ex.Message });
             }        
         }
-        [HttpDelete]
+        [HttpDelete("{id}")]
         public async Task<IActionResult> Delete(int id)
         {
             try

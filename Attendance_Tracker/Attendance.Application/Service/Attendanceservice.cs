@@ -31,7 +31,7 @@ namespace Attendance.Application.Service
                 var returndata = new Attendencegetdto
                 {
                     Id = result.Id,
-                    course = result.course
+                   
                 };
 
                 return returndata;
@@ -48,7 +48,17 @@ namespace Attendance.Application.Service
             {
                 var result = await repo.Getall();
 
-                var data = mapper.Map<List<Attendencegetdto>>(result);
+                var data = result.Select(x => new Attendencegetdto
+                {
+                    UserId = x.UserId,
+                    RecordedBy = x.RecordedBy,
+                    Id = x.Id,
+                    username = x.UserName,
+                    RecordedByName=x.RecordedByName,
+                    status = x.status,
+                    Date = x.Date,
+                    course = x.course,
+                }).ToList();
 
                 return data;
             }
@@ -58,12 +68,22 @@ namespace Attendance.Application.Service
             }
         }
 
-        public async Task<Attendencegetdto> Getbyid(int id)
+        public async Task<List<Attendencegetdto>> Getbyid(int id, string fn)
         {
             try
             {
-                var result=await repo.Get(id);
-                var data=mapper.Map<Attendencegetdto>(result);
+                var result=await repo.Get(id,fn);
+                var data = result.Select(x => new Attendencegetdto
+                {
+                    UserId = x.UserId,
+                    RecordedBy = x.RecordedBy,
+                    Id = x.Id,
+                    username = x.UserName,
+                    RecordedByName = x.RecordedByName,
+                    status = x.status,
+                    Date = x.Date,
+                    course = x.course,
+                }).ToList();
                 return data;
             }
             catch (Exception ex)
@@ -72,7 +92,7 @@ namespace Attendance.Application.Service
             }
         }
 
-        public async Task<Attendencegetdto> Post(Attendencegetdto dto)
+        public async Task<Attendencegetdto> Post(attendancepostdto dto)
         {
             try
             {
@@ -103,7 +123,7 @@ namespace Attendance.Application.Service
             }
         }
 
-        public async Task<Attendencegetdto> Put(Attendencegetdto dto)
+        public async Task<Attendencegetdto> Put(attendancepostdto dto)
         {
             try
             {

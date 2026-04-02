@@ -1,4 +1,5 @@
-﻿using Attendance.Domain.Entity;
+﻿using Attendance.Application.Dto.Attendancedto;
+using Attendance.Domain.Entity;
 using Attendance.Domain.Interface;
 using Attendance.Infrastructure.Dbcontext;
 using Microsoft.EntityFrameworkCore;
@@ -36,12 +37,48 @@ namespace Attendance.Infrastructure.Repositories
             }
         }
 
-        public async Task<AttendanceEntries> Get(int id)
+        public async Task<List<customdto>> Get(int id, string fn)
         {
             try
+
             {
-                var result = await context.Attendance.FirstOrDefaultAsync(x => x.Id == id);
-                return result;
+                if (fn == "edit")
+                {
+                    var result = await context.Attendance.Where(x => x.Id == id).Select(x => new customdto
+                    {
+                        UserId = x.UserId,
+                        RecordedBy = x.RecordedBy,
+                        Id = x.Id,
+                        UserName = x.User.Username,
+                        RecordedByName = x.RecordedUser.Username,
+                        status = x.status,
+                        Date = x.Date,
+                        course = x.course,
+
+                    })
+                 .ToListAsync();
+                    return result;
+
+                }
+                else
+                {
+                    var result = await context.Attendance.Where(x => x.UserId == id).Select(x => new customdto
+                    {
+                        UserId = x.UserId,
+                        RecordedBy = x.RecordedBy,
+                        Id = x.Id,
+                        UserName = x.User.Username,
+                        RecordedByName = x.RecordedUser.Username,
+                        status = x.status,
+                        Date = x.Date,
+                        course = x.course,
+
+                    })
+                .ToListAsync();
+                    return result;
+
+                }
+               
             }
             catch (Exception ex)
             {
@@ -49,11 +86,24 @@ namespace Attendance.Infrastructure.Repositories
             }
         }
 
-        public async Task<List<AttendanceEntries>> Getall()
+        public async Task<List<customdto>> Getall()
         {
             try
             {
-                var result=await context.Attendance.ToListAsync();
+                var result = await context.Attendance
+                                    .Select(x => new customdto
+                                    {
+                                        UserId=x.UserId,
+                                        RecordedBy=x.RecordedBy,
+                                        Id = x.Id,
+                                         UserName = x.User.Username,
+                                            RecordedByName = x.RecordedUser.Username,
+                                            status=x.status,
+                                            Date=x.Date,
+                                            course=x.course,
+                                            
+                                     })
+                                                .ToListAsync();
                 return result;
             }
             catch (Exception ex)
@@ -62,11 +112,12 @@ namespace Attendance.Infrastructure.Repositories
             }
         }
 
+
         public async Task<AttendanceEntries> Post(AttendanceEntries data)
         {
             try
             {
-                            await context.Attendance.AddAsync(data);
+                     await context.Attendance.AddAsync(data);
                     await context.SaveChangesAsync();
                     return data;
             }

@@ -11,17 +11,18 @@ using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
 using System.Text;
 using System.Threading.Tasks;
+using static System.Runtime.InteropServices.JavaScript.JSType;
 
 namespace Attendance.Application.Service
 {
     public class Userservice : IuserService
     {
-        private readonly IAttendence repo;
+        private readonly IUserRepo repo;
         private readonly IMapper mapper;
         private readonly IConfiguration config;
 
 
-        public Userservice(IAttendence repo,IMapper mapper, IConfiguration configuration)
+        public Userservice(IUserRepo repo,IMapper mapper, IConfiguration configuration)
         {
             this.repo = repo;
             this.mapper = mapper;
@@ -48,19 +49,56 @@ namespace Attendance.Application.Service
             }
         }
 
-        public async Task<List<Postdto>> Getall()
+        public async Task<List<Postdto>> Getall(string role)
         {
             try
             {
-                var result = await repo.Getall();
-                var returndata=mapper.Map<List<Postdto>>(result);
+                var data = await repo.Getall(role);
 
+                var returndata = data.Select(x => new Postdto
+                {
+                    Id = x.Id,
+                    Username = x.Username,
+                    Password = x.Password,
+                    Email = x.Email,
+                    RoleId = x.RoleId,
+
+                    Fullname = x.Userdetails?.Fullname,
+                    DOB = x.Userdetails?.DOB,
+                    Gender = x.Userdetails?.Gender,
+                    Phone = x.Userdetails?.Phone,
+                    Address = x.Userdetails?.Address,
+                    Department = x.Userdetails?.Department,
+                    Year = x.Userdetails?.Year
+
+                }).ToList();
                 return returndata;
             }
             catch (Exception ex)
             {
                 throw new Exception($"Userservice.Getall failed: {ex.Message}", ex);
             }
+        }
+
+        public async Task<Postdto> GetbyId(int id)
+        {
+            var result = await repo.GetbyId(id);
+            var data = new Postdto
+            {
+                Id = result.Id,
+                Username = result.Username,
+                Password = result.Password,
+                Email = result.Email,
+                RoleId = result.RoleId,
+                Fullname = result.Userdetails.Fullname,
+                DOB = result.Userdetails.DOB,
+                Gender=result.Userdetails.Gender,
+                Phone=result.Userdetails.Phone,
+                Address=result.Userdetails.Address,
+                Department=result.Userdetails.Department,
+                Year=result.Userdetails.Year
+            };
+            return data;
         }
 
         public async Task<getdto> Getuser(int id)
@@ -146,7 +184,28 @@ public async Task<claimdto> Login(Logindto data)
         }
     }
 
-    public async Task<Postdto> Posttuser(Postdto data)
+        public async Task<getdto> Postbyadmin(getdto dto)
+        {
+            var data = new User { 
+            Username = dto.Username,
+            Password = dto.Password,
+            Email = dto.Email,
+            RoleId = dto.RoleId,
+            
+            };
+            var result=await repo.Postbyadmin(data);
+            var returndata = new getdto {
+                Username = result.Username,
+                Password = result.Password,
+                Email = result.Email,
+                RoleId = result.RoleId,
+
+
+            };
+            return returndata;
+        }
+
+        public async Task<Postdto> Posttuser(Postdto data)
         {
             try
             {
@@ -192,6 +251,25 @@ public async Task<claimdto> Login(Logindto data)
             }
         }
 
+        public async Task<Userdetaildto> Postuserdetail(Userdetaildto data)
+        {
+            var Userdetails = new Userdetails
+            {
+                UserId = data.UserId,
+                Fullname = data.Fullname,
+                DOB = data.DOB,
+                Gender = data.Gender,
+                Phone = data.Phone,
+                Address = data.Address,
+                Department = data.Department,
+                Year = data.Year
+            };
+            await repo.Postuserdetail(Userdetails);
+            return data;
+
+
+        }
+
         public async Task<Postdto> Update(Postdto data)
         {
             try
@@ -202,7 +280,7 @@ public async Task<claimdto> Login(Logindto data)
                     Username = data.Username,
                     Email = data.Email,
                     Password = data.Password,
-                    RoleId = data.RoleId,
+                    RoleId = 1,
 
                     Userdetails = new Userdetails
                     {
@@ -241,6 +319,7 @@ public async Task<claimdto> Login(Logindto data)
                 throw new Exception($"Userservice.Update failed: {ex.Message}", ex);
             }
         }
+
     }
 }
 
